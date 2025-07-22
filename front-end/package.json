@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -r git@github.com:GamotPH/GAMOTPH-Website.git"
+
   },
   "dependencies": {
     "@portabletext/react": "^3.2.1",
