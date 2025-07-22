@@ -1,5 +1,5 @@
 import logo from "../assets/GAMOTPH-LOGO.png";
-import nulogo from "../assets/nulogo.png";
+import nulogo from "../assets/NUlogo.png";
 import { TiThMenu } from "react-icons/ti";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
