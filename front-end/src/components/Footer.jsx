@@ -75,7 +75,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="py-6 text-sm text-center text-gray-100">© 2025 GamotPH Toolkit: General Access Multilingual Online Tool for Public Health Drug-Reporting. All rights reserved.</div>
+      <div className="py-6 text-sm text-center text-gray-100">© 2025 GamotPH Project: General Access Multilingual Online Tool for Public Health Drug-Reporting. All rights reserved.</div>
     </footer>
   );
 };

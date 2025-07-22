@@ -68,7 +68,7 @@ const About = () => {
 
       <h2 className="text-2xl font-semibold mt-8 mb-4">Looking Ahead</h2>
       <p className="mb-4">
-        Now ongoing from <strong>January 2025 to December 2025</strong>, the GAMOTPH Toolkit is poised to be a transformative force in Philippine healthcare. This groundbreaking project is funded by the <strong>Department of Science and Technology – Philippine Council for Health Research and Development (DOST PCHRD)</strong> with a grant of <strong>PHP 4,999,999.00</strong>.
+        Now ongoing from <strong>January 2025 to December 2025</strong>, the GAMOTPH Project is poised to be a transformative force in Philippine healthcare. This groundbreaking project is funded by the <strong>Department of Science and Technology – Philippine Council for Health Research and Development (DOST PCHRD)</strong> with a grant of <strong>PHP 4,999,999.00</strong>.
       </p>
       <p className="mb-4">
         With a vision rooted in inclusivity, innovation, and nation-building, Dr. Abisado’s team is not just advancing public health—they are setting a new standard for how digital tools can make healthcare safer, fairer, and more responsive to everyone.

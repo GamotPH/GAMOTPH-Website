@@ -17,7 +17,7 @@ function App() {
   const location = useLocation(); 
   const [heroData, setHeroData] = useState({
     bgImage: defaultBg, 
-    title: 'GamotPH Toolkit: General Access Multilingual Online Tool for Public Health Drug-Reporting:',
+    title: 'GamotPH Project: General Access Multilingual Online Tool for Public Health Drug-Reporting:',
     description: 'Enhancing adverse drug reporting through AI-driven multilingual analysis for better public health monitoring.', 
   });
   const [bgImages, setBgImages] = useState([]);
@@ -95,7 +95,7 @@ if (articleMatch) {
           if (data) {
             setHeroData({
               bgImage: data.bgImage || defaultBg,
-              title: data.title || "GamotPH Toolkit: General Access Multilingual Online Tool for Public Health Drug-Reporting:",
+              title: data.title || "GamotPH Project: General Access Multilingual Online Tool for Public Health Drug-Reporting:",
               description: data.description || "Enhancing adverse drug reporting through AI-driven multilingual analysis for better public health monitoring.",
               theme: "dark" 
             });
@@ -117,7 +117,7 @@ if (articleMatch) {
           setBgImages(data); // Store the list
           setHeroData({
             bgImage: data[0].url,
-            title: "GamotPH Toolkit: General Access Multilingual Online Tool for Public Health Drug-Reporting:",
+            title: "GamotPH Project: General Access Multilingual Online Tool for Public Health Drug-Reporting:",
             description: "Enhancing adverse drug reporting through AI-driven multilingual analysis for better public health monitoring.",
             theme: data[0].themeClassification || "dark"
           });
@@ -129,7 +129,7 @@ if (articleMatch) {
       // Default hero
       setHeroData({
         bgImage: defaultBg,
-        title: "GamotPH Toolkit: General Access Multilingual Online Tool for Public Health Drug-Reporting: ",
+        title: "GamotPH Project: General Access Multilingual Online Tool for Public Health Drug-Reporting: ",
         description: "Enhancing adverse drug reporting through AI-driven multilingual analysis for better public health monitoring.",
         theme: 'dark'
       });
