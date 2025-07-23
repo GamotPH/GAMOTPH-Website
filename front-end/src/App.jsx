@@ -125,15 +125,39 @@ if (articleMatch) {
       }).catch(console.error);
     }
     
-    else {
-      // Default hero
-      setHeroData({
-        bgImage: defaultBg,
-        title: "GamotPH Project: General Access Multilingual Online Tool for Public Health Drug-Reporting: ",
-        description: "Enhancing adverse drug reporting through AI-driven multilingual analysis for better public health monitoring.",
-        theme: 'dark'
-      });
-    }
+    else if (location.pathname === "/about") {
+  setHeroData({
+    bgImage: defaultBg,
+    title: "GamotPH Project: General Access Multilingual Online Tool for Public Health Drug-Reporting:",
+    description: "Enhancing adverse drug reporting through AI-driven multilingual analysis for better public health monitoring.",
+    theme: "dark"
+  });
+}
+else if (location.pathname === "/people") {
+  setHeroData({
+    bgImage: defaultBg,
+    title: "Meet the Team Behind the GAMOTPH Project",
+    description: "Researchers and Innovators advancing inclusive healthcare.",
+    theme: "dark"
+  });
+}
+else if (location.pathname === "/ContactUs") {
+  setHeroData({
+    bgImage: defaultBg,
+    title: "GamotPH Project: General Access Multilingual Online Tool for Public Health Drug-Reporting:",
+    description: "Get in touch with us to learn more about the project.",
+    theme: "dark"
+  });
+}
+else {
+  setHeroData({
+    bgImage: defaultBg,
+    title: "GamotPH Project: General Access Multilingual Online Tool for Public Health Drug-Reporting:",
+    description: "Enhancing adverse drug reporting through AI-driven multilingual analysis for better public health monitoring.",
+    theme: "dark"
+  });
+}
+
   }, [location]);
   
   useEffect(() => {
@@ -159,7 +183,8 @@ if (articleMatch) {
     <>
       <NavBar theme={heroData.theme}/>
       <Hero bgImage={heroData.bgImage} title={heroData.title} description={heroData.description} person={heroData.person}
-      fullHeight={location.pathname === '/'}/>
+      fullHeight={location.pathname === '/'}
+      theme={heroData.theme}/>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About fullHeight={false}/>} />

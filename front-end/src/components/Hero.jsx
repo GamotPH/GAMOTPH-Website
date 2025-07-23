@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 
-const Hero = ({ bgImage, title, description, person, fullHeight = false }) => {
+const Hero = ({ bgImage, title, description, person, fullHeight = false, theme = "dark" }) => {
   const [currentImage, setCurrentImage] = useState(bgImage);
   const [prevImage, setPrevImage] = useState(null);
   const [fadeIn, setFadeIn] = useState(true);
+
+  const isDark = (theme || '').toLowerCase() === 'dark';
 
   useEffect(() => {
     if (bgImage && bgImage !== currentImage) {
@@ -22,7 +24,6 @@ const Hero = ({ bgImage, title, description, person, fullHeight = false }) => {
 
   return (
     <div className={`relative w-full ${fullHeight ? "h-screen" : "h-[75vh]"} overflow-hidden`}>
-
       {/* Background: New image fading in */}
       <img
         src={currentImage}
@@ -45,7 +46,11 @@ const Hero = ({ bgImage, title, description, person, fullHeight = false }) => {
       <div className="absolute top-0 left-0 w-full h-full z-30" />
 
       {/* Foreground Content */}
-     <div className={`relative z-40 flex flex-col items-center justify-center px-6 sm:px-12 text-white text-center ${fullHeight ? "h-screen" : "h-[75vh]"}`}>
+      <div
+        className={`relative z-40 flex flex-col items-center justify-center px-6 sm:px-12 text-center transition-colors duration-500 ${
+          fullHeight ? "h-screen" : "h-[75vh]"
+        }`}
+      >
         <div className="max-w-[1100px] mx-auto flex flex-col md:flex-row items-center md:items-end gap-8">
           {person?.image && (
             <img
@@ -54,13 +59,32 @@ const Hero = ({ bgImage, title, description, person, fullHeight = false }) => {
               className="w-36 h-36 md:w-72 md:h-72 object-cover rounded-md shadow-lg"
             />
           )}
-          <div className="text-center md:text-left">
-            <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-[5px_5px_10px_#000000]">
+          <div className="text-center md:text-left transition-colors duration-500">
+            <h1
+              className={`text-4xl md:text-5xl font-bold transition-all duration-500 ${
+                isDark ? "text-white" : "text-black"
+              }`}
+              style={{
+                textShadow: isDark
+                  ? "5px 5px 10px #000000"
+                  : "5px 5px 10px #ffffff"
+              }}
+            >
               {person?.name || title}
             </h1>
-            <p className="text-lg md:text-2xl mt-2 text-white drop-shadow-[3px_3px_6px_#000000]">
+            <p
+              className={`text-2xl md:text-3xl mt-2 transition-all duration-500 ${
+                isDark ? "text-white" : "text-black"
+              }`}
+              style={{
+                textShadow: isDark
+                  ? "1px 1px 6px rgba(0, 0, 0, 0.6)"
+                  : "1px 1px 6px rgba(255, 255, 255, 0.8)"
+              }}
+            >
               {person?.role || description}
             </p>
+
           </div>
         </div>
       </div>

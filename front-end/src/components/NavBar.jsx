@@ -1,4 +1,5 @@
-import logo from "../assets/GAMOTPH-LOGO-LIGHT-THEME.png";
+import logoLight from "../assets/GAMOTPH-LOGO-LIGHT.png";
+import logoDark from "../assets/GAMOTPH-LOGO-DARK.png";
 import nulogo from "../assets/NUlogo.png";
 import { TiThMenu } from "react-icons/ti";
 import React, { useEffect, useState } from "react";
@@ -52,12 +53,23 @@ const NavBar = ({ theme = "light" }) => {
             alt="NU"
           />
         </Link>
-        <Link onClick={scrollToTop} to="/">
-          <img
-            className="cursor-pointer h-[2rem] md:h-[3rem] w-auto z-20"
-            src={logo}
-            alt="GAMOTPH"
-          />
+        <Link onClick={scrollToTop} to="/" className="relative h-[2rem] md:h-[3rem] w-auto">
+          <div className="relative h-full w-[10rem] md:w-[20rem]">
+            <img
+              src={logoDark}
+              alt="GAMOTPH Light"
+              className={`absolute top-0 left-0 h-full w-auto transition-opacity duration-500 ease-in-out ${
+                isDarkBg ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <img
+              src={logoLight}
+              alt="GAMOTPH Dark"
+              className={`absolute top-0 left-0 h-full w-auto transition-opacity duration-500 ease-in-out ${
+                isDarkBg ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          </div>
         </Link>
       </div>
 
