@@ -4,12 +4,15 @@ import nulogo from "../assets/NUlogo-Light.png";
 import nulogoDark from "../assets/NUlogo-Dark.png";
 import { TiThMenu } from "react-icons/ti";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
 
 const NavBar = ({ theme = "light" }) => {
   const [nav, setNav] = useState(false);
   const [top, setTop] = useState(true);
   const isDarkBg = !top || (theme || "").toLowerCase() === "dark";
+  const location = useLocation();
+
 
   const handleNav = () => {
     setNav(!nav);
@@ -32,7 +35,7 @@ const NavBar = ({ theme = "light" }) => {
   const links = [
     { name: "Home", path: "/" },
     { name: "About", path: "/About" },
-    { name: "Articles", path: "/Articles" },
+    { name: "Articles", path: "/articles" },
     { name: "People", path: "/People" },
     { name: "Contact Us", path: "/ContactUs" },
   ];
@@ -90,20 +93,46 @@ const NavBar = ({ theme = "light" }) => {
 
       {/* Desktop Navigation Links */}
       <ul className="hidden md:flex gap-8 items-center text-lg font-semibold">
-        {links.map(({ name, path }) => (
-          <li key={name}>
-            <Link
-              to={path}
-              onClick={scrollToTop}
-              className={`transition-colors duration-300 ${
-                isDarkBg ? "text-white hover:text-gray-300" : "text-black hover:text-gray-600"
-              }`}
-            >
-              {name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+  {links.map(({ name, path }) => {
+    const isHome = path === "/";
+  const isActive = isHome
+    ? location.pathname === "/"
+    : location.pathname.startsWith(path);
+
+    return (
+      <li key={name} className="relative group w-max">
+        <Link
+          to={path}
+          onClick={scrollToTop}
+          className={`transition-colors duration-300 ${
+            isDarkBg ? "text-white" : "text-black"
+          }`}
+        >
+          <span
+            className={`inline-block transition-transform duration-200
+              ${isActive ? "scale-125" : "hover:scale-125"}
+            `}
+          >
+            {name}
+          </span>
+
+          {/* Underlines */}
+          <span
+            className={`absolute -bottom-1 left-1/2 transition-all h-0.5 bg-deepblue 
+              ${isActive ? "w-3/6" : "w-0 group-hover:w-3/6"}
+            `}
+          />
+          <span
+            className={`absolute -bottom-1 right-1/2 transition-all h-0.5 bg-deepblue 
+              ${isActive ? "w-3/6" : "w-0 group-hover:w-3/6"}
+            `}
+          />
+        </Link>
+      </li>
+    );
+  })}
+</ul>
+
 
       {/* Mobile Hamburger */}
       <TiThMenu

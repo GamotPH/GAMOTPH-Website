@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Hero = ({ bgImage, title, description, person, fullHeight = false, theme = "dark" }) => {
+const Hero = ({ bgImage, title, description, person, fullHeight = false, theme = "dark", isArticle = false }) => {
   const [currentImage, setCurrentImage] = useState(bgImage);
   const [prevImage, setPrevImage] = useState(null);
   const [fadeIn, setFadeIn] = useState(true);
@@ -43,7 +43,11 @@ const Hero = ({ bgImage, title, description, person, fullHeight = false, theme =
       )}
 
       {/* Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full z-30" />
+      <div
+  className={`absolute top-0 left-0 w-full h-full z-30 transition-colors duration-500 ${
+    isArticle ? "bg-black bg-opacity-40" : ""
+  }`}
+/>
 
       {/* Foreground Content */}
       <div

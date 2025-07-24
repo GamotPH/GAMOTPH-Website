@@ -12,6 +12,8 @@ import ResearchTeam from './components/ResearchTeam';
 import PersonOverview from './components/PersonOverview';
 import ContactUs from './components/ContactUs';
 import About from './components/About';
+import Articles from './components/Articles';
+import ArticleDetail from './components/ArticleDetail';
 
 function App() {
   const location = useLocation(); 
@@ -33,6 +35,8 @@ function App() {
     const projectMatch = path.match(/^\/project\/([^/]+)/);
     const publicationMatch = path.match(/^\/publications\/([^/]+)$/);
     const personMatch = path.match(/^\/people\/([^/]+)$/);
+    const gamotphArticleMatch = path.match(/^\/articles\/([^/]+)$/);
+
 
 if (articleMatch) {
       // Handle article hero
@@ -56,6 +60,27 @@ if (articleMatch) {
         })
         .catch(console.error);
     } 
+    else if (gamotphArticleMatch) {
+  const articleSlug = decodeURIComponent(gamotphArticleMatch[1]);
+  const query = `*[_type == "article" && slug.current == $slug][0]{
+    title,
+    "bgImage": image.asset->url,
+    "description": excerpt
+  }`;
+
+  client.fetch(query, { slug: articleSlug })
+    .then((data) => {
+      if (data) {
+        setHeroData({
+          bgImage: data.bgImage || defaultBg,
+          title: data.title || "Article",
+          description: data.description || "",
+          theme: "dark"
+        });
+      }
+    })
+    .catch(console.error);
+}
     else if (personMatch) {
       const personSlug = decodeURIComponent(personMatch[1]);
       const query = `*[_type == "researchTeamLab" && slug.current == $slug][0]{
@@ -184,7 +209,9 @@ else {
       <NavBar theme={heroData.theme}/>
       <Hero bgImage={heroData.bgImage} title={heroData.title} description={heroData.description} person={heroData.person}
       fullHeight={location.pathname === '/'}
-      theme={heroData.theme}/>
+      theme={heroData.theme}
+      isArticle={location.pathname.startsWith("/articles/")}
+      />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About fullHeight={false}/>} />
@@ -193,6 +220,8 @@ else {
         <Route path='/projects' element={<Projects />} />
         <Route path="/project/:id/researchTeam" element={<ResearchTeam />} />
         <Route path="/ContactUs" element={<ContactUs />} />
+        <Route path="/articles" element={<Articles />} />
+        <Route path="/articles/:slug" element={<ArticleDetail />} />
         <Route path="*" element={<h1 className="text-center p-6">404 - Page Not Found</h1>} />
 
       </Routes>

@@ -22,6 +22,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        deepblue: '#1a9fc7',
+        nugold: '#FBD117',
         color: {
           1: "#AC6AFF",
           2: "#FFC876",
