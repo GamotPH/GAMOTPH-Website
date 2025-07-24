@@ -67,7 +67,7 @@ const Hero = ({ bgImage, title, description, person, fullHeight = false, theme =
               style={{
                 textShadow: isDark
                   ? "5px 5px 10px #000000"
-                  : "5px 5px 10px #ffffff"
+                  : "5px 5px 100px #ffffff"
               }}
             >
               {person?.name || title}
@@ -78,8 +78,8 @@ const Hero = ({ bgImage, title, description, person, fullHeight = false, theme =
               }`}
               style={{
                 textShadow: isDark
-                  ? "1px 1px 6px rgba(0, 0, 0, 0.6)"
-                  : "1px 1px 6px rgba(255, 255, 255, 0.8)"
+                  ? "5px 5px 10px #000000"
+                  : "5px 5px 100px #ffffff"
               }}
             >
               {person?.role || description}

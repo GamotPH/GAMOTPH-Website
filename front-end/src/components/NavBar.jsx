@@ -1,6 +1,7 @@
 import logoLight from "../assets/GAMOTPH-LOGO-LIGHT.png";
 import logoDark from "../assets/GAMOTPH-LOGO-DARK.png";
-import nulogo from "../assets/NUlogo.png";
+import nulogo from "../assets/NUlogo-Light.png";
+import nulogoDark from "../assets/NUlogo-Dark.png";
 import { TiThMenu } from "react-icons/ti";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -47,19 +48,33 @@ const NavBar = ({ theme = "light" }) => {
       {/* Logos */}
       <div className="flex items-center gap-1">
         <Link onClick={scrollToTop} to="https://national-u.edu.ph/">
-          <img
-            className="cursor-pointer size-[4rem] md:size-[5rem] z-20 m-3"
-            src={nulogo}
-            alt="NU"
-          />
+          <div className="relative w-[3.5rem] md:w-[5rem] h-[3.5rem] md:h-[5rem] flex items-center justify-center">
+            {/* NU Logo Dark */}
+            <img
+              src={nulogoDark}
+              alt="NU Dark"
+              className={`absolute object-contain max-w-full max-h-full transition-opacity duration-500 ease-in-out ${
+                isDarkBg ? "opacity-0" : "opacity-100 "
+              }`}
+            />
+            {/* NU Logo Light */}
+            <img
+              src={nulogo}
+              alt="NU Light"
+              className={`absolute object-contain max-w-full max-h-full transition-opacity duration-500 ease-in-out ${
+                isDarkBg ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          </div>
         </Link>
+
         <Link onClick={scrollToTop} to="/" className="relative h-[2rem] md:h-[3rem] w-auto">
           <div className="relative h-full w-[10rem] md:w-[20rem]">
             <img
               src={logoDark}
               alt="GAMOTPH Light"
               className={`absolute top-0 left-0 h-full w-auto transition-opacity duration-500 ease-in-out ${
-                isDarkBg ? "opacity-0" : "opacity-100"
+                isDarkBg ? "opacity-0" : "opacity-100 "
               }`}
             />
             <img

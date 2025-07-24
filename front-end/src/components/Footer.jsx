@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/GAMOTPH-LOGO-LIGHT.png";
-import nulogo from "../assets/NUlogo.png";
+import nulogo from "../assets/NUlogo-Light.png";
 
 const Footer = () => {
     const scrollToTop = () => {
