@@ -14,6 +14,10 @@ import ContactUs from './components/ContactUs';
 import About from './components/About';
 import Articles from './components/Articles';
 import ArticleDetail from './components/ArticleDetail';
+import Publication from './components/Publication';
+import PublicationDetail from './components/PublicationDetails';
+import Partners from './components/Partners';
+import PartnerDetails from './components/PartnerDetails';
 
 function App() {
   const location = useLocation(); 
@@ -37,8 +41,29 @@ function App() {
     const personMatch = path.match(/^\/people\/([^/]+)$/);
     const gamotphArticleMatch = path.match(/^\/articles\/([^/]+)$/);
 
+if (publicationMatch) {
+      const publicationSlug = decodeURIComponent(publicationMatch[1]);
+      const query = `*[_type == "publication" && slug.current == $slug][0]{
+        publicationName,
+        "bgImage": image.asset->url,
+        publicationDescription
+      }`;
+    
+      client.fetch(query, { slug: publicationSlug })
+        .then((data) => {
+          if (data) {
+            setHeroData({
+              bgImage: data.bgImage || defaultBg,
+              title: data.publicationName || "Publication",
+              // description: data.publicationDescription || "",
+              theme: "dark" 
+            });
+          }
+        })
+        .catch(console.error);
+    }
 
-if (articleMatch) {
+else if (articleMatch) {
       // Handle article hero
       const articleSlug = decodeURIComponent(articleMatch[1]);
       const query = `*[_type == "article" && slug.current == $slug][0]{
@@ -222,6 +247,10 @@ else {
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:slug" element={<ArticleDetail />} />
+        <Route path='/publication' element={<Publication />} />
+        <Route path="/publications/:publicationId" element={<PublicationDetail />} />
+        <Route path="/partners" element={<Partners />} />
+        <Route path="/partners/:slug" element={<PartnerDetails />} />
         <Route path="*" element={<h1 className="text-center p-6">404 - Page Not Found</h1>} />
 
       </Routes>

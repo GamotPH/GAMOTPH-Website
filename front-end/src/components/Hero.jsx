@@ -44,14 +44,14 @@ const Hero = ({ bgImage, title, description, person, fullHeight = false, theme =
 
       {/* Overlay */}
       <div
-  className={`absolute top-0 left-0 w-full h-full z-30 transition-colors duration-500 ${
+  className={`absolute top-0 left-0 w-full h-full z-30 transition-colors duration-300 ${
     isArticle ? "bg-black bg-opacity-40" : ""
   }`}
 />
 
       {/* Foreground Content */}
       <div
-        className={`relative z-40 flex flex-col items-center justify-center px-6 sm:px-12 text-center transition-colors duration-500 ${
+        className={`relative z-40 flex flex-col items-center justify-center px-6 sm:px-12 text-center transition-colors duration-300 ${
           fullHeight ? "h-screen" : "h-[75vh]"
         }`}
       >
@@ -63,9 +63,9 @@ const Hero = ({ bgImage, title, description, person, fullHeight = false, theme =
               className="w-36 h-36 md:w-72 md:h-72 object-cover rounded-md shadow-lg"
             />
           )}
-          <div className="text-center md:text-left transition-colors duration-500">
+          <div className="text-center md:text-left transition-colors duration-300">
             <h1
-              className={`text-4xl md:text-5xl font-bold transition-all duration-500 ${
+              className={`text-4xl md:text-5xl font-bold transition-all duration-300 ${
                 isDark ? "text-white" : "text-black"
               }`}
               style={{
@@ -77,7 +77,7 @@ const Hero = ({ bgImage, title, description, person, fullHeight = false, theme =
               {person?.name || title}
             </h1>
             <p
-              className={`text-2xl md:text-3xl mt-2 transition-all duration-500 ${
+              className={`text-2xl md:text-3xl mt-2 transition-all duration-300 ${
                 isDark ? "text-white" : "text-black"
               }`}
               style={{

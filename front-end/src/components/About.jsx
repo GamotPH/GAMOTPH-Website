@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section className="px-6 py-12 max-w-5xl mx-auto text-gray-800">
+    <section className="px-6 py-12 max-w-5xl mx-auto text-gray-800 text-justify">
       <h1 className="text-3xl md:text-4xl font-bold mb-4">
         Breaking Barriers: Linguistic Inclusivity in Adverse Drug Reaction Reporting – The GAMOTPH Project
       </h1>

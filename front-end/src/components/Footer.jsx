@@ -28,7 +28,9 @@ const Footer = () => {
               <li>
                 <Link onClick={scrollToTop} className="text-gray-100 hover:text-gray-300" to="/about">About</Link>
               </li>
-              
+              <li>
+                <Link onClick={scrollToTop} className="text-gray-100 hover:text-gray-300" to="/articles">Articles</Link>
+              </li>
             </ul>
           </div>
 
@@ -36,10 +38,13 @@ const Footer = () => {
             {/* <h3 className="tracking-wide uppercase text-gray-100">Company</h3> */}
             <ul className="space-y-1">
               <li>
-                <Link onClick={scrollToTop} className="text-gray-100 hover:text-gray-300" to="/articles">Articles</Link>
+                <Link onClick={scrollToTop} className="text-gray-100 hover:text-gray-300" to="/publication">Publications</Link>
               </li>
               <li>
                 <Link onClick={scrollToTop} className="text-gray-100 hover:text-gray-300" to="/people">People</Link>
+              </li>
+              <li>
+                <Link onClick={scrollToTop} className="text-gray-100 hover:text-gray-300" to="/partners">Partners</Link>
               </li>
             </ul>
           </div>

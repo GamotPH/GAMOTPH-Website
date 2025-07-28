@@ -36,7 +36,9 @@ const NavBar = ({ theme = "light" }) => {
     { name: "Home", path: "/" },
     { name: "About", path: "/About" },
     { name: "Articles", path: "/articles" },
+    { name: "Publications", path: "/publication" },
     { name: "People", path: "/People" },
+    { name: "Partners", path: "/Partners" },
     { name: "Contact Us", path: "/ContactUs" },
   ];
 
